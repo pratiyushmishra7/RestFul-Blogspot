@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blog App</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+</head>
+<body>
+    
+        <div class="ui inverted segment">
+          <div class="ui inverted secondary pointing menu">
+              <div class="header item"><i class = "archive icon"></i>Blog Site</div>
+            <a class="active item">
+              Home
+            </a>
+            <a class="item" href="blogs/new">
+              New Blog
+            </a>
+          </div>
+        </div>
+    
+ <div class="ui main text container">
+     <div class="ui huge header">RestFul BlogSpot</div>
+     <div class="ui top  attached segment"> 
+        <div class="ui divided items">
+            
+
+            <%
+                for(var i=0;i<blogs.length;i++) { %>
+                    <div class="item">
+                       <div class="image">
+                        <img src="<%= blogs[i].image %>" >
+                       </div>
+                        <div class="content">
+                           <a class="header" href="/blogs/<%= blogs[i]._id %>"><%=blogs[i].title%></a>
+                           <div class="meta"><span><p><%=blogs[i].created.toDateString()%></p></span></div>
+                           <div class="description"> <p><%- blogs[i].body.substring(0,100)%>...</p></div>
+                           <div class="extra">
+                               <a class="ui floated basic violet button" href="/blogs/<%= blogs[i]._id %>">
+                                             Read More
+                                             <i class="right chevron icon"></i>
+                               </a>
+                           </div>
+                        </div>
+                    </div> 
+                       
+                        
+                        
+                <% }
+            %>
+
+        
+     </div>
+ </div>
+ </div>
+
+
+
+</body>
+</html>

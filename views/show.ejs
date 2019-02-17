@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>Blog App</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+</head>
+<body>
+    
+        <div class="ui inverted segment">
+          <div class="ui inverted secondary pointing menu">
+              <div class="header item"><i class = "archive icon"></i>Blog Site</div>
+            <a class="item" href="/blogs">
+              Home
+            </a>
+            <a class="item" href="/blogs/new">
+              New Blog
+            </a>
+          </div>
+        </div>
+<div class="ui main text container segment">
+    <div class="ui huge header"><%=blog.title%></div>
+    <div><img class="ui fluid image" src="<%=blog.image%>"></div>
+     <div class="content"><%=blog.created.toDateString()%></div>
+     <!--= se - karne se html accept hota hai-->
+    <div class="description"><%- blog.body %></div>   
+     <a href="/blogs/<%= blog._id %>/edit"><button class="ui black button">Edit</button></a>
+    <form id="display" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+       <button class="negative ui button">Delete</button>
+    </form>
+  
+    
+    
+</div>
+</body>
+</html>
